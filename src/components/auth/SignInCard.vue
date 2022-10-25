@@ -75,9 +75,9 @@ const emitError = (event) => {
       <q-card-section>
         <div class="flex column">
           <label for="email" class="input-label q-ml-xs q-mb-sm">Email</label>
-          <q-input id="email" v-model.trim="user.email" outlined dense :error="$v.email.$invalid && $v.email.$dirty" :error-message="$v.email.$invalid ? $v.email.$silentErrors[0].$message : ''"/>
+          <q-input id="email" v-model.trim="user.email" outlined dense :error="$v.email.$invalid && $v.email.$dirty" :error-message="$v.email.$invalid ? $v.email.$silentErrors[0].$message : ''" no-error-icon/>
           <label for="password" class="input-label q-ml-xs q-mb-sm q-mt-lg">Password</label>
-          <q-input id="password" v-model.trim="user.password" type="password" outlined dense :error="$v.password.$invalid && $v.password.$dirty" :error-message="$v.password.$invalid ? $v.password.$silentErrors[0].$message : ''" />
+          <q-input id="password" v-model.trim="user.password" type="password" outlined dense :error="$v.password.$invalid && $v.password.$dirty" :error-message="$v.password.$invalid ? $v.password.$silentErrors[0].$message : ''" no-error-icon />
           <p class="text-primary text-center q-mt-lg router-link-small">Forgot your password?</p>
           <q-btn class="q-mt-lg q-mb-lg btn-primary" @click="signInWithPassword" no-caps flat :disabled="$v.$invalid">Sign in</q-btn>
           <div class="row items-center q-mt-lg q-mb-lg text-slate-500">

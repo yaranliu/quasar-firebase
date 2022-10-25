@@ -36,14 +36,14 @@
           <drawer-item target="home" label="Home" requires-auth/>
           <drawer-item target="inbox" label="Inbox" requires-auth/>
           <q-separator />
-          <q-item v-if="auth.isAuthenticated" clickable @click="signOut">Logout</q-item>
+          <q-item v-if="auth.isAuthenticated" clickable @click="signOut" class="items-center">Logout</q-item>
           <q-separator />
         </span>
         <q-item-label header class="text-overline text-slate-500">Navigation</q-item-label>
         <drawer-item target="news" label="News" />
         <drawer-item target="support" label="Support" />
         <q-separator />
-        <q-item clickable @click="router.push({ name: 'sign-in' })">Sign In</q-item>
+        <q-item clickable @click="router.push({ name: 'sign-in' })" class="items-center">Sign In</q-item>
       </q-list>
     </q-drawer>
 

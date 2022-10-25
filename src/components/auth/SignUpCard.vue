@@ -77,11 +77,11 @@ const emitError = (event) => {
       <q-card-section>
         <div class="flex column">
           <label for="email" class="input-label q-ml-xs q-mb-sm">Email</label>
-          <q-input id="email" v-model.trim="user.email" outlined dense :error="$v.email.$invalid && $v.email.$dirty" :error-message="$v.email.$invalid ? $v.email.$silentErrors[0].$message : ''"/>
+          <q-input id="email" v-model.trim="user.email" outlined dense :error="$v.email.$invalid && $v.email.$dirty" :error-message="$v.email.$invalid ? $v.email.$silentErrors[0].$message : ''" no-error-icon/>
           <label for="password" class="input-label q-ml-xs q-mb-sm q-mt-lg">Password</label>
-          <q-input id="password" v-model.trim="user.password" type="password" outlined dense :error="$v.password.$invalid && $v.password.$dirty" :error-message="$v.password.$invalid ? $v.password.$silentErrors[0].$message : ''"/>
+          <q-input id="password" v-model.trim="user.password" type="password" outlined dense :error="$v.password.$invalid && $v.password.$dirty" :error-message="$v.password.$invalid ? $v.password.$silentErrors[0].$message : ''" no-error-icon/>
           <label for="password" class="input-label q-ml-xs q-mb-sm q-mt-lg">Confirm your password</label>
-          <q-input id="password" v-model.trim="user.confirm" type="password" outlined dense :error="$v.confirm.$invalid && $v.confirm.$dirty" :error-message="$v.confirm.$invalid ? $v.confirm.$silentErrors[0].$message : ''"/>
+          <q-input id="password" v-model.trim="user.confirm" type="password" outlined dense :error="$v.confirm.$invalid && $v.confirm.$dirty" :error-message="$v.confirm.$invalid ? $v.confirm.$silentErrors[0].$message : ''" no-error-icon/>
           <q-btn class="q-mt-xl q-mb-lg btn-primary" @click="signUpWithPassword" no-caps flat :disabled="$v.$invalid">Create your account</q-btn>
           <div class="row items-center q-mt-lg q-mb-lg text-slate-500">
             <hr class="col">
