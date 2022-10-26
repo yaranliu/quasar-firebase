@@ -13,7 +13,7 @@ const routes = [
       { path: '/support', name:'support', component: () => import('pages/common/SupportPage.vue') },
 
       // Authenticated pages
-      { path: '/home', name:'home', component: () => import('pages/user/HomePage.vue'), meta: { requiresAuth: true } },
+      { path: '/me', name:'me', component: () => import('pages/user/HomePage.vue'), meta: { requiresAuth: true } },
       { path: '/inbox', name:'inbox', component: () => import('pages/user/InboxPage.vue'), meta: { requiresAuth: true } },
     ],
 

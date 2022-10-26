@@ -14,7 +14,7 @@ const router = useRouter()
 
 import { AuthErrorCodes } from "firebase/auth";
 
-import { appAuthProviders } from "/src/components/auth/app-auth-providers.js"
+import { appAuthProviders } from "/src/components/auth/app-auth-providers.ts"
 import SignInProviders from "components/auth/SignInProviders.vue";
 
 // Validations
@@ -78,7 +78,6 @@ const emitError = (event) => {
             <hr class="col">
           </div>
           <SignInProviders
-            vertical
             :providers="appAuthProviders" icon-size="1.2rem" class="q-px-xl"
             @signed-in="emitSignedIn($event)"
             @sign-in-started="emitStarted($event)"

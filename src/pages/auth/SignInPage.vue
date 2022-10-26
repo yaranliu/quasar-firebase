@@ -1,4 +1,9 @@
 <script setup>
+
+import { ref, reactive } from "vue"
+
+const showError = ref(false)
+
 import { useQuasar } from 'quasar';
 const $q = useQuasar();
 
@@ -10,10 +15,11 @@ import { useRouter } from "vue-router";
 const router = useRouter()
 
 import { useAuthStore } from "stores/auth";
+import SimpleErrorDialog from "components/dialogs/SimpleErrorDialog.vue";
 const auth = useAuthStore()
 
 const onSignedIn = (provider) => {
-  router.push({ name: 'home'})
+  router.push({ name: 'me'})
 }
 
 const onSignInStarted  = (provider) => {
@@ -25,10 +31,9 @@ const onSignInEnded  = (provider) => {
   $q.loading.hide()
 }
 
-const onError = (error) => {
-  console.log(error)
+const onError = (authError) => {
+  showError.value = true
 }
-
 </script>
 <template>
   <q-page padding class="flex flex-center bg-slate-50">
@@ -40,6 +45,7 @@ const onError = (error) => {
       @error-encountered="onError"
     />
     <div v-show = "auth.inProgress && !auth.isAuthenticated" >Please wait</div>
+    <SimpleErrorDialog v-model="showError" title="Authentication error" :message="auth.error.Message" />
   </q-page>
 </template>
 <style scoped lang="scss">

@@ -1,10 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="column">
-      <SignInProviders :providers="appAuthProviders" />
-      <SignInProviders vertical :providers="appAuthProviders" />
-    </div>
-
+  <q-page padding class="flex flex-center">
+    <div class="text-h3">Public Home Page (index.html)</div>
   </q-page>
 </template>
 
@@ -19,7 +15,7 @@ const router = useRouter()
 
 const auth = useAuthStore();
 
-import { appAuthProviders } from "/src/components/auth/app-auth-providers.js"
+import { appAuthProviders } from "/src/components/auth/app-auth-providers.ts"
 
 const emit = defineEmits(['signedIn', 'started', 'ended']);
 

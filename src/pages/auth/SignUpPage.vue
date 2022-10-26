@@ -11,7 +11,7 @@ const router = useRouter()
 
 const onSignedIn = (provider) => {
   console.log("Signed In with " + provider)
-  router.push({ name: 'home'})
+  router.push({ name: 'me'})
 }
 
 const onSignUpStarted  = (provider) => {

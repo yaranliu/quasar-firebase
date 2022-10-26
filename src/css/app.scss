@@ -50,6 +50,25 @@
   }
 }
 
+.btn-danger {
+  background-color: $red-50;
+  color: $red-500;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.3rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  &:hover:not(:disabled) {
+    background-color: $red-100 !important;
+    opacity: 1 !important;
+    transform: scale(1.03);
+  }
+  &:hover:disabled {
+    transform: scale(1);
+  }
+}
+
 .router-link-small {
   font-size: 0.8rem;
   transition: all 0.2s ease-in-out;

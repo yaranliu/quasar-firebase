@@ -15,7 +15,7 @@ const router = useRouter()
 
 import { AuthErrorCodes } from "firebase/auth";
 
-import { appAuthProviders } from "/src/components/auth/app-auth-providers.js"
+import { appAuthProviders } from "/src/components/auth/app-auth-providers.ts"
 import SignInProviders from "components/auth/SignInProviders.vue";
 
 

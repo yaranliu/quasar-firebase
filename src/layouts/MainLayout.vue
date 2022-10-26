@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title @click="router.push({ name:'home' })" class="cursor-pointer" >
+        <q-toolbar-title @click="router.push({ name: 'home' })" class="cursor-pointer" >
           <div class="column q-py-sm">
             <div>{{ app.name }}</div>
             <div style="font-size: 0.7rem">{{ app.description }}</div>
@@ -33,17 +33,18 @@
       <q-list>
         <span v-if="auth.isAuthenticated">
           <q-item-label header class="text-overline text-slate-500">User</q-item-label>
-          <drawer-item target="home" label="Home" requires-auth/>
+          <drawer-item target="me" label="Home" requires-auth/>
           <drawer-item target="inbox" label="Inbox" requires-auth/>
           <q-separator />
           <q-item v-if="auth.isAuthenticated" clickable @click="signOut" class="items-center">Logout</q-item>
           <q-separator />
         </span>
         <q-item-label header class="text-overline text-slate-500">Navigation</q-item-label>
+        <drawer-item target="home" label="Index" />
         <drawer-item target="news" label="News" />
         <drawer-item target="support" label="Support" />
         <q-separator />
-        <q-item clickable @click="router.push({ name: 'sign-in' })" class="items-center">Sign In</q-item>
+        <drawer-item target="sign-in" label="Sign In" />
       </q-list>
     </q-drawer>
 
