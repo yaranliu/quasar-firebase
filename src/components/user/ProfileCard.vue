@@ -11,7 +11,6 @@ defineProps({
 })
 
 onMounted(() => {
-  console.log(auth.user)
 })
 
 </script>

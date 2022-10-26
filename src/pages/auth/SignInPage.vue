@@ -13,18 +13,15 @@ import { useAuthStore } from "stores/auth";
 const auth = useAuthStore()
 
 const onSignedIn = (provider) => {
-  console.log("Signed In with " + provider)
   router.push({ name: 'home'})
 }
 
 const onSignInStarted  = (provider) => {
-  console.log("Signing in with " + provider)
   let message = 'Signing in with ' + (provider === 'password' ? 'User Credentials' : _string.upperFirst(provider) )
   $q.loading.show({ message: message })
 }
 
 const onSignInEnded  = (provider) => {
-  console.log("Sign in completed with " + provider)
   $q.loading.hide()
 }
 

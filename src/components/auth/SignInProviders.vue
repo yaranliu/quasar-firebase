@@ -1,6 +1,7 @@
 <script setup>
 
 import { useAuthStore} from "stores/auth";
+import { AuthenticationProvider } from "components/auth/AuthenticationProvider";
 const auth = useAuthStore();
 
 const emit = defineEmits(['signedIn', 'signInStarted', 'signInEnded', 'errorEncountered']);
@@ -17,95 +18,68 @@ defineProps({
   providers: {
     type: Object,
     default: () => {
-      return {
-        google: {
-          title: 'Google',
-          icon: 'fa-brands fa-google',
+      return [
+        {
+          source: AuthenticationProvider.Google,
+          title: 'Sign in with Google',
+          icon: 'fa-brands fa-google'
         },
-        apple: {
-          title: 'Apple',
-          icon: 'fa-brands fa-apple',
+        {
+          source: AuthenticationProvider.Apple,
+          title: 'Sign in with Apple',
+          icon: 'fa-brands fa-apple'
         },
-        facebook: {
-          title: 'Facebook',
-          icon: 'fa-brands fa-facebook',
+        {
+          source: AuthenticationProvider.Facebook,
+          title: 'Sign in with Facebook',
+          icon: 'fa-brands fa-facebook'
         },
-        twitter: {
-          title: 'Twitter',
-          icon: 'fa-brands fa-twitter',
+        {
+          source: AuthenticationProvider.Twitter,
+          title: 'Sign in with Twitter',
+          icon: 'fa-brands fa-twitter'
         },
-        github: {
-          title: 'Github',
-          icon: 'fa-brands fa-github',
+        {
+          source: AuthenticationProvider.Github,
+          title: 'Sign in with Github',
+          icon: 'fa-brands fa-github'
         },
-        linkedIn: {
-          title: 'LinkedIn',
-          icon: 'fa-brands fa-linkedin',
+        {
+          source: AuthenticationProvider.LinkedIn,
+          title: 'Sign in with LinkedIn',
+          icon: 'fa-brands fa-linkedin'
         },
-      }
+      ]
     }
   }
 })
 
-const signInWithGoogle = () => {
-  emit('signInStarted', 'google')
-  auth.signInWithGoogle().then(user => {
-    console.log(user)
-    emit('signedIn', 'google')
+const signIn = (provider) => {
+  emit('signInStarted', provider)
+  auth.signInWithProvider(provider).then(user => {
+    emit('signedIn', provider)
   }).catch(error => {
     console.log(error)
     emit('errorEncountered', error)
   }).finally(() => {
-    emit('signInEnded', 'google')
+    emit('signInEnded', provider)
   });
 }
+
 </script>
 
 <template>
   <div v-if="vertical" class="flex column justify-between" id="vertical-provider-buttons">
-    <div v-if="'google' in providers" class="row col justify-start items-center provider-button scale-less" @click="signInWithGoogle">
-      <q-icon class="col-1 q-mx-md" :name="providers.google.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.google.title }}</div>
-    </div>
-    <div v-if="'apple' in providers" class="row col justify-start items-center provider-button scale-less">
-      <q-icon class="col-1 q-mx-md " :name="providers.apple.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.apple.title }}</div>
-    </div>
-    <div v-if="'facebook' in providers" class="row col justify-start items-center provider-button scale-less">
-      <q-icon class="q-mx-md col-1" :name="providers.facebook.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.facebook.title }}</div>
-    </div>
-    <div v-if="'twitter' in providers" class="row col justify-start items-center provider-button scale-less">
-      <q-icon class="q-mx-md col-1" :name="providers.twitter.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.twitter.title }}</div>
-    </div>
-    <div v-if="'github' in providers" class="row col justify-start items-center provider-button scale-less">
-      <q-icon class="q-mx-md col-1" :name="providers.github.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.github.title }}</div>
-    </div>
-    <div v-if="'linkedIn' in providers" class="row col justify-start items-center provider-button scale-less">
-      <q-icon class="q-mx-md col-1" :name="providers.linkedIn.icon" :size="iconSize"/>
-      <div class="col text-no-wrap q-mr-lg">{{ providers.linkedIn.title }}</div>
+    <div v-for="provider in providers" :key="provider.source" class="row col justify-start items-center provider-button scale-less" @click="signIn(provider.source)">
+      <q-icon class="col-1 q-mx-md" :name="provider.icon" :size="iconSize"/>
+      <div class="col text-no-wrap q-mr-lg">{{ provider.title }}</div>
     </div>
   </div>
   <div v-else class="flex row justify-between" id="horizontal-provider-buttons">
-    <div v-if="'google' in providers" class="flex flex-center col provider-button" @click="signInWithGoogle">
-      <q-icon :name="providers.google.icon" :size="iconSize"/>
-    </div>
-    <div v-if="'apple' in providers" class="flex flex-center col provider-button">
-      <q-icon :name="providers.apple.icon" :size="iconSize"/>
-    </div>
-    <div v-if="'facebook' in providers" class="flex flex-center col provider-button">
-      <q-icon :name="providers.facebook.icon" :size="iconSize"/>
-    </div>
-    <div v-if="'twitter' in providers" class="flex flex-center col provider-button">
-      <q-icon :name="providers.twitter.icon" :size="iconSize"/>
-    </div>
-    <div v-if="'github' in providers" class="flex flex-center col provider-button">
-      <q-icon :name="providers.github.icon" :size="iconSize"/>
-    </div>
-    <div v-if="'linkedIn' in providers" class="flex flex-center col provider-button">
-      <q-icon :name="providers.linkedIn.icon" :size="iconSize"/>
+    <div v-for="provider in providers" :key="provider.source">
+      <div class="flex flex-center col provider-button" @click="signIn(provider.source)">
+        <q-icon :name="provider.icon" :size="iconSize"/>
+      </div>
     </div>
   </div>
 </template>

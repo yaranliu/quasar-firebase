@@ -76,7 +76,6 @@ const app = {
 
 const signOut = () => {
   auth.signOut().then(() => {
-    console.log('Signed out')
     router.push({ name: 'sign-in' })
   }).catch(error => {
     console.log(error)

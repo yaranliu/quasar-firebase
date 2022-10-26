@@ -14,7 +14,7 @@ const router = useRouter()
 
 import { AuthErrorCodes } from "firebase/auth";
 
-import { authProviders } from "/src/components/auth/auth-providers.js"
+import { appAuthProviders } from "/src/components/auth/app-auth-providers.js"
 import SignInProviders from "components/auth/SignInProviders.vue";
 
 // Validations
@@ -29,13 +29,10 @@ const rules = computed (() => { return {
 const $v = useVuelidate(rules, user, { $autoDirty: true })
 
 const signInWithPassword = () => {
-  console.log('Signing in with password')
   emitStarted('password')
   auth.signIn(user.email, user.password).then(user => {
-    console.log(user)
     emitSignedIn('password')
   }).catch(error => {
-    console.log('Mapped error', error)
     emitError(error)
     if (error.code === AuthErrorCodes.USER_DELETED) {
       console.log('User not found')
@@ -46,24 +43,19 @@ const signInWithPassword = () => {
 }
 
 const emitSignedIn = (event) => {
-  console.log(event)
   emit('signedIn', event)
 }
 const emitStarted = (event) => {
-  console.log(event)
   emit('signInStarted', event)
 }
 const emitEnded = (event) => {
-  console.log(event)
   emit('signInEnded', event)
 }
 const emitError = (event) => {
-  console.log(event)
   emit('errorEncountered', event)
 }
 
 
-// TODO: Fix input field resizing on error
 // TODO: Fix button border on focus
 // TODO: Add forgot password
 
@@ -86,7 +78,8 @@ const emitError = (event) => {
             <hr class="col">
           </div>
           <SignInProviders
-            :providers="authProviders" icon-size="1.2rem" class="q-px-xl"
+            vertical
+            :providers="appAuthProviders" icon-size="1.2rem" class="q-px-xl"
             @signed-in="emitSignedIn($event)"
             @sign-in-started="emitStarted($event)"
             @sign-in-ended="emitEnded($event)"

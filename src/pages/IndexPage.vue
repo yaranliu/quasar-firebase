@@ -1,8 +1,8 @@
 <template>
   <q-page class="flex flex-center">
     <div class="column">
-      <SignInProviders :providers="authProviders" />
-      <SignInProviders vertical :providers="authProviders" />
+      <SignInProviders :providers="appAuthProviders" />
+      <SignInProviders vertical :providers="appAuthProviders" />
     </div>
 
   </q-page>
@@ -19,7 +19,7 @@ const router = useRouter()
 
 const auth = useAuthStore();
 
-import { authProviders } from "/src/components/auth/auth-providers.js"
+import { appAuthProviders } from "/src/components/auth/app-auth-providers.js"
 
 const emit = defineEmits(['signedIn', 'started', 'ended']);
 
