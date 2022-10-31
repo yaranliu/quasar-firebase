@@ -11,6 +11,7 @@ const routes = [
       // Public pages
       { path: '/news', name:'news', component: () => import('pages/common/NewsPage.vue') },
       { path: '/support', name:'support', component: () => import('pages/common/SupportPage.vue') },
+      { path: '/util/theme', name:'util-theme', component: () => import('pages/util/ThemePage.vue') },
 
       // Authenticated pages
       { path: '/me', name:'me', component: () => import('pages/user/HomePage.vue'), meta: { requiresAuth: true } },

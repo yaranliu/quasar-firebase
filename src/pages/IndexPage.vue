@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="flex flex-center">
+  <q-page paddinf class="flex flex-center">
     <div class="text-h3">Public Home Page (index.html)</div>
   </q-page>
 </template>
@@ -16,6 +16,7 @@ const router = useRouter()
 const auth = useAuthStore();
 
 import { appAuthProviders } from "/src/components/auth/app-auth-providers.ts"
+import ColorVariants from "components/util/ColorVariants.vue";
 
 const emit = defineEmits(['signedIn', 'started', 'ended']);
 

@@ -12,36 +12,21 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-@import "tailwind-color-palette";
-
-//$primary   : #1976D2;
-//$secondary : #26A69A;
-//$accent    : #9C27B0;
-//
-//$dark      : #1D1D1D;
-//$dark-page : #121212;
-//
-//$positive  : #21BA45;
-//$negative  : #C10015;
-//$info      : #31CCEC;
-//$warning   : #F2C037;
-
-$primary        : $violet-700;
-$primary-subtle : $violet-50;
-$primary-darker : $violet-900;
-
-$secondary : #26A69A;
-$accent    : #9C27B0;
+@import "theme";
 
 $dark      : #1D1D1D;
 $dark-page : #121212;
 
 $positive  : #21BA45;
 $negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+
+$primary-darker: $primary-700;
+$primary-subtle: $primary-100;
+
 
 $space-base: 12px;
 $generic-border-radius: 8px;
 
+//$typography-font-family: 'Montserrat', sans-serif;
 $typography-font-family: 'Poppins', sans-serif;
+

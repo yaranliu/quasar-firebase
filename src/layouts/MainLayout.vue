@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -43,8 +43,10 @@
         <drawer-item target="home" label="Index" />
         <drawer-item target="news" label="News" />
         <drawer-item target="support" label="Support" />
+        <q-item-label header class="text-overline text-slate-500">Utility</q-item-label>
+        <drawer-item target="util-theme" label="Theme" />
         <q-separator />
-        <drawer-item target="sign-in" label="Sign In" />
+        <drawer-item v-if="!auth.isAuthenticated" target="sign-in" label="Sign In" />
       </q-list>
     </q-drawer>
 
@@ -55,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 

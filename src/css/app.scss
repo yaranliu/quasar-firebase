@@ -1,10 +1,9 @@
 // app global css in SCSS form
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@import "tailwind-color-palette";
+@import "typography";
 
 .input-field {
-  border: 2px solid $gray-300;
+  border: 2px solid $slate-300;
   border-radius: 0.25rem;
   padding: 0.3rem;
   outline: 2px solid transparent;
@@ -16,12 +15,12 @@
 }
 
 .input-field-error {
-  background: $red-50;
+  background: $danger-50;
   &:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
     --tw-border-opacity: 1;
-    border-color: $red-600;
+    border-color: $danger-600;
   }
 }
 
@@ -41,7 +40,7 @@
   font-weight: 600;
   transition: all 0.2s ease-in-out;
   &:hover:not(:disabled) {
-    background-color: $primary-darker !important;
+    background-color: $primary-900 !important;
     opacity: 1 !important;
     transform: scale(1.03);
   }
@@ -51,8 +50,8 @@
 }
 
 .btn-danger {
-  background-color: $red-50;
-  color: $red-500;
+  background-color: $danger-50;
+  color: $danger-500;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.3rem 1rem;
@@ -60,7 +59,7 @@
   font-weight: 600;
   transition: all 0.2s ease-in-out;
   &:hover:not(:disabled) {
-    background-color: $red-100 !important;
+    background-color: $danger-100 !important;
     opacity: 1 !important;
     transform: scale(1.03);
   }
@@ -78,16 +77,5 @@
   }
 }
 
-.bg-primary-darker { background-color: $primary-darker; }
+.bg-primary-darker { background-color: $primary-900; }
 
-.bg-red-300 { background-color: $red-300; }
-.text-red-300 { color: $red-300; }
-
-.bg-red-800 { background-color: $red-800; }
-.text-red-800 { color: $red-800; }
-
-.bg-slate-500 { background-color: $slate-500; }
-.text-slate-500 { color: $slate-500; }
-
-.bg-slate-50 { background-color: $slate-50; }
-.text-slate-50 { color: $slate-50; }
